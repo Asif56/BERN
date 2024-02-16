@@ -3,11 +3,12 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "proxy":"localhost:4000",
   "scripts": {
     "start-server": "node api/server.js",
     "start-client": "vite",
     "dev": "concurrently \"npm run start-server\" \"npm run start-client\"",
-    "build": "vite build",
+    "build": "concurrently \"npm run start-server\" \"vite build\" ",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
   },
