@@ -7,7 +7,7 @@
     "start-server": "node api/server.js",
     "start-client": "vite",
     "dev": "concurrently \"npm run start-server\" \"npm run start-client\"",
-    "build": "concurrently \"npm run start-server\" \"npm run start-client\" build",
+    "build": "vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
   },
