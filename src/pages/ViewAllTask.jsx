@@ -30,6 +30,7 @@ const ViewAllTask = ({state}) => {
     <>
       <Navigation/>
       <div className="view_all_tasks">
+       <div style={{fontSize:'20px',color:'green'}}>All yours created ToDos.</div>
       {taskList.map((task)=>{
         return(
             <div 

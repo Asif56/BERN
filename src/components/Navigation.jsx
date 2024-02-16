@@ -2,7 +2,9 @@ import {Link} from "react-router-dom";
 const Navigation =()=>{
     return(
         <header>
-        <div className="logo" to='/'>TODO 3.O</div>
+        <div className="logo"><Link className="nav_link" to="/">
+        TODO 3.O
+              </Link></div>
         <nav>
           <ul>
           <li>

@@ -5,9 +5,9 @@ import ABI from './ABI.json'
 import { useNavigate } from 'react-router-dom';
 import useCustome from '../components/useCustome';
 
-const Wallet = ({saveState,state}) => {
+const Wallet = ({saveState}) => {
     const navigateTo=useNavigate()
-    useCustome(state)
+    // useCustome(state)
     const connectWallet =async()=>{
         try{
            if(window.ethereum){
