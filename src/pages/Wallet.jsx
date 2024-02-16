@@ -15,7 +15,7 @@ const Wallet = ({saveState}) => {
                const accounts = await window.ethereum.request({
                  method:"eth_requestAccounts"
                })
-               console.log(accounts)
+              //  console.log(accounts)
                const contractAddress="0x3877663f86De524EA1b63dC22d99ea2D1F5bdfEa"
                const contract = new web3.eth.Contract(ABI,contractAddress);
                console.log(contract)
