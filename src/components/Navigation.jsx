@@ -3,7 +3,7 @@ const Navigation =()=>{
     return(
         <header>
         <div className="logo"><Link className="nav_link" to="/">
-        TODO 3.O
+              TODO 3.O
               </Link></div>
         <nav>
           <ul>
