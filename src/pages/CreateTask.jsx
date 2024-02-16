@@ -1,14 +1,19 @@
 import React, { useState } from 'react'
 import Navigation from '../components/Navigation';
+import useCustome from '../components/useCustome';
+import { useNavigate } from 'react-router-dom';
 
 const CreateTask = ({state}) => {
   const [modalOpen, setModalOpen] = useState(false);
   const [modalContent, setModalContent] = useState("");
-
+  useCustome(state)
+  const navigateTo= useNavigate()
+  
   const closeModal=()=>{
     setModalOpen(false);
     setModalContent("");
-}
+    navigateTo("/view-all-tasks")
+   }
 
   const createTask=async(event)=>{
     event.preventDefault();
@@ -23,10 +28,7 @@ const CreateTask = ({state}) => {
                 },
                 body:JSON.stringify({taskDate})
             })
-            console.log(contract,account)
             const data = await res.json()
-            console.log(taskName,taskDate)
-            console.log('data',data)
 
             if(data.status===200){
               if(contract && contract.methods){
@@ -36,7 +38,9 @@ const CreateTask = ({state}) => {
                   setModalContent(`Task ${taskName} added at ${taskDate}`);
               }
           }else{
-              alert("Task cannot be added")
+              // alert("Task cannot be added")  
+              setModalContent(`Task cannot be added due to existed same date in todo`);
+
           }
 
     } catch (error) {
@@ -49,8 +53,12 @@ const CreateTask = ({state}) => {
   return (
     <>
     <Navigation/>
-    <div className="create_task todo_btn">
+       <div className="create_task todo_btn">
             <form onSubmit={createTask}>
+              <div style={{justifyContent:'flex-start'}}>
+              <p style={{color:"orange",paddingBottom:"2px"}}>* You can priority the task by adding 'priority' keyword.</p>
+              <p style={{color:"orange", display:''}}>* Created tasks won't have same date.</p>
+              </div>
               <label>
                 Name:
                 <input id="taskName" type='text'/>

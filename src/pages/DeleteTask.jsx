@@ -1,14 +1,19 @@
 import React, { useState } from 'react'
 import Navigation from '../components/Navigation'
+import useCustome from '../components/useCustome';
+import { useNavigate } from 'react-router-dom';
 
 export default function DeleteTask({state}) {
   const [value,setValue]= useState("")
   const [modalOpen, setModalOpen] = useState(false);
   const [modalContent, setModalContent] = useState("");
+  useCustome(state)
+  const navigateTo= useNavigate()
 
   const closeModal=()=>{
     setModalOpen(false);
     setModalContent("");
+    navigateTo("/view-all-tasks")
    }
     const handleChange=(e)=>{
         e.preventDefault()
@@ -28,7 +33,6 @@ export default function DeleteTask({state}) {
         })
 
         const data = await res.json()
-        console.log(data)
 
             if(data.status===200) {
               
@@ -43,7 +47,6 @@ export default function DeleteTask({state}) {
                 setModalContent(`${data.message}`);
             }
         } catch (error) {
-             console.log('error',error)
             setModalContent(`There is problem to delete the task`);
         } finally {
             setModalOpen(true);

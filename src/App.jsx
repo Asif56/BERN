@@ -20,7 +20,7 @@ function App() {
     {path:'/',element:<Wallet saveState={saveState} />},
     {path:'/create-task',element:<CreateTask state={state} />},
     {path:'/view-all-tasks',element:<ViewAllTask state={state} />},
-    {path:'/view-task',element:<ViewTask  />},
+    {path:'/view-task',element:<ViewTask  state={state} />},
     {path:'/update-task',element:<UpdateTask state={state}/>},
     {path:'/delete-task',element:<DeleteTask state={state}/>}
 

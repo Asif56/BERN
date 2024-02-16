@@ -1,8 +1,10 @@
 import {useState,useEffect} from "react";
 import Navigation from "../components/Navigation";
+import useCustome from "../components/useCustome";
 
-const ViewAllTask = () => {
+const ViewAllTask = ({state}) => {
     const [taskList,setTaskList]=useState([])
+    useCustome(state)
 
     useEffect(()=>{
         const allTasks = async()=>{

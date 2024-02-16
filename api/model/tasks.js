@@ -1,10 +1,8 @@
 const {contract} =require('../contract/contract')
 
 const checkDate=async (taskDate)=>{
-    console.log(taskDate)
     const instance= await contract.methods.allTaskCreate().call()
     const isExist= instance.find(date=>date.Date===taskDate)
-    console.log('isExist',isExist)
     if(isExist){
         return isExist.name
     }
@@ -16,4 +14,9 @@ const periortyCheck= async (taskId)=>{
     return instance[taskId-1].name.includes('priority')
 }
 
-module.exports={checkDate,periortyCheck}
+const checkId=async(_id)=>{
+    const instance= await contract.methods.allTaskCreate().call()
+    const isExist= instance.find(date=>date.Id===_id)
+}
+
+module.exports={checkDate,periortyCheck,checkId}

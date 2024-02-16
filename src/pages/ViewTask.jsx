@@ -1,10 +1,13 @@
 import {useState} from "react";
 import Navigation from "../components/Navigation";
+import useCustome from "../components/useCustome";
 
-const ViewTask = () => {
+const ViewTask = ({state}) => {
     const [task,setTask]=useState([]);
     const [modalVisible, setModalVisible] = useState(false);
     const [modalContent, setModalContent] = useState("");
+    useCustome(state)
+
     const closeModal = () => {
       setModalVisible(false);
       setModalContent("");
@@ -23,13 +26,12 @@ const ViewTask = () => {
            });
            const data = await res.json();
            if(data.status===200){
-             console.log(data.taskObj)
              setTask(data.taskObj)
            }else{
              throw new Error;
            }
         }catch(error){
-            console.error(error)
+            // console.error('error',error)
          setModalContent("Task does not exist");
          setModalVisible(true);
         }

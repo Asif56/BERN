@@ -1,14 +1,19 @@
 import React, { useState } from 'react'
 import Navigation from '../components/Navigation'
+import useCustome from '../components/useCustome';
+import { useNavigate } from 'react-router-dom';
 
 export default function UpdateTask({state}) {
     const [value,setValue]= useState("")
     const [modalOpen, setModalOpen] = useState(false);
   const [modalContent, setModalContent] = useState("");
+  useCustome(state)
+  const navigateTo= useNavigate()
 
   const closeModal=()=>{
     setModalOpen(false);
     setModalContent("");
+    navigateTo("/view-all-tasks")
 }
 
     const handleChange=(e)=>{
@@ -39,19 +44,13 @@ export default function UpdateTask({state}) {
                     .send({from:account})
                     setModalContent(`Task ${name} at ${date} date has been updated`);
                 }
-            }
-            
-        
-            
+            }    
         } catch (error) {
             setModalContent(`There is problem to update the task`);
         } finally{
           setModalOpen(true)
         }
-
-        
     }
-//   console.log(value)
   return (
     <>
     <Navigation/>

@@ -3,11 +3,11 @@ import PropTypes from 'prop-types';
 import Web3 from 'web3';
 import ABI from './ABI.json'
 import { useNavigate } from 'react-router-dom';
+import useCustome from '../components/useCustome';
 
-const Wallet = ({saveState}) => {
-
+const Wallet = ({saveState,state}) => {
     const navigateTo=useNavigate()
-
+    useCustome(state)
     const connectWallet =async()=>{
         try{
            if(window.ethereum){
@@ -15,10 +15,8 @@ const Wallet = ({saveState}) => {
                const accounts = await window.ethereum.request({
                  method:"eth_requestAccounts"
                })
-              //  console.log(accounts)
                const contractAddress="0x3877663f86De524EA1b63dC22d99ea2D1F5bdfEa"
                const contract = new web3.eth.Contract(ABI,contractAddress);
-               console.log(contract)
                saveState({web3:web3,contract:contract,account:accounts[0]})
                navigateTo("/view-all-tasks")
            }else{

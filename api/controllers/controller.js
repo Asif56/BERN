@@ -34,7 +34,7 @@ const deleteTask=async (req,res)=>{
     const data=await periortyCheck(taskId)
     try {
         if(data){
-            res.status(403).json({status:403,message:"Task can not be deleted due to task's name 'priority' keyword"})
+            res.status(403).json({status:403,message:"Task can not be deleted due to task's name 'priority'."})
         }else{
             res.status(200).json({status:200,message:"Task can be deleted"})
         }
@@ -49,6 +49,9 @@ const viewTask=async (req,res)=>{
     
         const task=await contract.methods.viewTask(taskId).call()
         const {_id,name,Date}=task
+        if(name=="" && Date==""){
+            throw new Error;
+        }
         const newId=Number(_id)
         const taskObj={
             newId,name,Date
