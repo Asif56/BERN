@@ -24,7 +24,7 @@ export default function DeleteTask({state}) {
         const {contract,account}=state;
         const {id}=value
         try {
-            const res=await fetch(`http://localhost:4000/api/ethereum/delete-task/${id}`,{
+            const res=await fetch(`https://bern2.onrender.com/api/ethereum/delete-task/${id}`,{
             method:"Post",
             headers:{
                 "content-type":"application/json"

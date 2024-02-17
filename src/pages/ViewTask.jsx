@@ -17,7 +17,7 @@ const ViewTask = ({state}) => {
         try{
            event.preventDefault()
            const taskID = document.querySelector("#taskID").value;
-           const res = await fetch(`http://localhost:4000/api/ethereum/view-task/${taskID}`,
+           const res = await fetch(`https://bern2.onrender.com/api/ethereum/view-task/${taskID}`,
            {
              method:"GET",
              headers:{

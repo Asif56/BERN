@@ -27,7 +27,7 @@ export default function UpdateTask({state}) {
         const {id,name,date}=value
 
         try {
-            const res=await fetch("http://localhost:4000/api/ethereum/update-task",{
+            const res=await fetch("https://bern2.onrender.com/api/ethereum/update-task",{
             method:"Post",
             headers:{
                 "content-type":"application/json"

@@ -3,11 +3,9 @@ import PropTypes from 'prop-types';
 import Web3 from 'web3';
 import ABI from './ABI.json'
 import { useNavigate } from 'react-router-dom';
-import useCustome from '../components/useCustome';
 
 const Wallet = ({saveState}) => {
     const navigateTo=useNavigate()
-    // useCustome(state)
     const connectWallet =async()=>{
         try{
            if(window.ethereum){

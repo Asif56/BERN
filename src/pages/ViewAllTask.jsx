@@ -9,7 +9,7 @@ const ViewAllTask = ({state}) => {
     useEffect(()=>{
         const allTasks = async()=>{
             try{
-                const res = await fetch("http://localhost:4000/api/ethereum/view-all-tasks",{
+                const res = await fetch("https://bern2.onrender.com/api/ethereum/view-all-tasks",{
                     method:"GET",
                     headers:{
                         "content-type":"application/json"

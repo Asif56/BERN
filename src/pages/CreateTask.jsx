@@ -21,7 +21,7 @@ const CreateTask = ({state}) => {
     const taskName = document.querySelector("#taskName").value;
     const taskDate = document.querySelector("#taskDate").value;
     try {
-      const res = await fetch("http://localhost:4000/api/ethereum/create-task",{
+      const res = await fetch("https://bern2.onrender.com/api/ethereum/create-task",{
                 method:"POST",
                 headers:{
                     "content-type":"application/json"
